@@ -1,0 +1,95 @@
+cubes:
+  - name: analisi
+    sql_table: public.analisi
+    data_source: default
+
+    dimensions:
+      - name: id
+        sql: id
+        type: number
+        primary_key: true
+
+      - name: haemoglobin
+        sql: "haemoglobin"
+        type: number
+
+      - name: totalLeukocytesCount
+        sql: "total_leukocytes_count"
+        type: number
+
+      - name: palatelets
+        sql: "palatelets"
+        type: number
+
+      - name: glucose
+        sql: "glucose"
+        type: number
+
+      - name: urea
+        sql: "urea"
+        type: number
+
+      - name: creatinine
+        sql: "creatinine"
+        type: number
+
+      - name: bTypeNatriureticPeptide
+        sql: "b_type_natriuretic_peptide"
+        type: number
+
+      - name: ejectionFraction
+        sql: "ejection_fraction"
+        type: number
+
+      - name: raised_cardiac_enzymes
+        sql: "raised_cardiac_enzymes"
+        type: boolean
+
+    measures:
+      - name: count
+        type: count
+
+      - name: avg_haemoglobin
+        type: avg
+        sql: haemoglobin
+
+      - name: avg_totalLeukocytesCount
+        type: avg
+        sql: total_leukocytes_count
+
+      - name: avg_palatelets
+        type: avg
+        sql: palatelets
+
+      - name: avg_glucose
+        type: avg
+        sql: glucose
+
+      - name: avg_urea
+        type: avg
+        sql: urea
+
+      - name: avg_creatinine
+        type: avg
+        sql: creatinine
+
+      - name: avg_bTypeNatriureticPeptide
+        type: avg
+        sql: b_type_natriuretic_peptide
+
+      - name: avg_ejectionFraction
+        type: avg
+        sql: ejection_fraction
+      
+      - name: test
+        type: number
+        sql: ejection_fraction
+
+
+
+
+
+    pre_aggregations:
+      # Pre-aggregation definitions go here.
+      # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
+

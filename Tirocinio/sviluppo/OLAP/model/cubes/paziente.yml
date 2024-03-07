@@ -1,0 +1,70 @@
+cubes:
+  - name: paziente
+    sql_table: public.paziente
+    data_source: default
+
+    joins:
+      - name: ospedalizzazione
+        relationship: one_to_many
+        sql: "{paziente}.serial_number = {ospedalizzazione.serial_number}"
+
+    dimensions:
+
+      - name: alcohol
+        sql: alcohol
+        type: boolean
+
+      - name: gender
+        sql: gender
+        type: string
+
+      - name: rural
+        sql: rural
+        type: string
+
+      - name: age
+        sql: age
+        type: number
+
+      - name: smoking
+        sql: smoking
+        type: boolean
+
+      - name: chronic_kidney_disease
+        sql: chronic_kidney_disease
+        type: boolean
+
+
+      - name: hypertension
+        sql: hypertension
+        type: boolean
+
+      - name: cardiomyopahty
+        sql: cardiomyopahty
+        type: boolean
+
+      - name: coronary_artery_disease
+        sql: coronary_artery_disease
+        type: boolean
+
+
+      - name: diabetes_mellitus
+        sql: diabetes_mellitus
+        type: boolean
+
+      - name: serial_number
+        sql: serial_number
+        type: number
+        primary_key: true
+
+    measures:
+      - name: count
+        type: count
+
+
+
+
+    pre_aggregations:
+      # Pre-aggregation definitions go here.
+      # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
+

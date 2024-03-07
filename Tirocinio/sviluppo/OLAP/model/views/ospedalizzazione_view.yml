@@ -1,0 +1,24 @@
+
+
+views:
+   - name: analisiPaziente
+
+     cubes:
+       - join_path: ospedalizzazione
+         includes:
+           - numero_osp
+           - serial_number
+           - date_admission
+           - acute_kidney_injury
+
+
+      
+       - join_path: ospedalizzazione.paziente
+         prefix: true
+         includes: 
+           - rural
+           - coronary_artery_disease
+      
+       - join_path: ospedalizzazione.analisi
+         prefix: true
+         includes: "*"

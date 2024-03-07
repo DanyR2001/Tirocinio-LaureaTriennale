@@ -1,0 +1,189 @@
+cubes:
+  - name: ospedalizzazione
+    sql_table: public.ospedalizzazione
+    data_source: default
+
+    joins:
+      - name: analisi
+        sql: "{ospedalizzazione}.analisi_id = {analisi.id}"
+        relationship: one_to_one
+
+      - name: paziente
+        sql: "{ospedalizzazione}.serial_number={paziente.serial_number}"
+        relationship: many_to_one
+
+    dimensions:
+      - name: serial_number
+        sql: serial_number
+        type: number
+
+      - name: admission_number
+        sql: admission_number
+        type: number
+        primary_key: true
+
+      - name: outcame
+        sql: outcame
+        type: string
+
+      - name: type_of_admission_emergencyopd
+        sql: type_of_admission_emergencyopd
+        type: string
+
+      - name: date_admission
+        sql: date_admission
+        type: time
+
+      - name: date_discharge
+        sql: date_discharge
+        type: time
+
+      - name: infective_endocarditis
+        sql: infective_endocarditis
+        type: boolean
+
+      - name: deep_venous_thrombosis
+        sql: deep_venous_thrombosis
+        type: boolean
+
+      - name: pulmonary_shock
+        sql: pulmonary_shock
+        type: boolean
+
+      - name: paroxysmal_supra_ventricular_tachycardia
+        sql: paroxysmal_supra_ventricular_tachycardia
+        type: boolean
+
+      - name: chest_infection
+        sql: chest_infection
+        type: boolean
+
+      - name: urinary_tract_infection
+        sql: urinary_tract_infection
+        type: boolean
+
+      - name: orthostatic
+        sql: orthostatic
+        type: boolean
+
+      - name: cardiogenic_shock
+        sql: cardiogenic_shock
+        type: boolean
+
+      - name: ventricular_tachycardia
+        sql: ventricular_tachycardia
+        type: boolean
+
+      - name: cerebrovascular_accident_bleed
+        sql: cerebrovascular_accident_bleed
+        type: boolean
+
+      - name: st_elevation_myocardial_infraction
+        sql: st_elevation_myocardial_infraction
+        type: boolean
+
+      - name: shock
+        sql: shock
+        type: boolean
+
+      - name: sick_sinus_syndrome
+        sql: sick_sinus_syndrome
+        type: boolean
+
+      - name: atypical_chest_pain
+        sql: atypical_chest_pain
+        type: boolean
+
+      - name: atrial_fibrilation
+        sql: atrial_fibrilation
+        type: boolean
+
+      - name: heart_failure_with_normal_fraction
+        sql: heart_failure_with_normal_fraction
+        type: boolean
+
+      - name: severe_anemia
+        sql: severe_anemia
+        type: boolean
+
+      - name: heart_failure_with_reduced_fraction
+        sql: heart_failure_with_reduced_fraction
+        type: boolean
+
+      - name: heart_failure
+        sql: heart_failure
+        type: boolean
+
+      - name: congenital_heart_disease
+        sql: congenital_heart_disease
+        type: boolean
+
+      - name: valvular_heart_disease
+        sql: valvular_heart_disease
+        type: boolean
+
+      - name: acute_coronary_syndrome
+        sql: acute_coronary_syndrome
+        type: boolean
+
+      - name: complete_heart_block
+        sql: complete_heart_block
+        type: boolean
+
+      - name: stable_angina
+        sql: stable_angina
+        type: boolean
+
+      - name: neuro_cardiogenic_syncope
+        sql: neuro_cardiogenic_syncope
+        type: boolean
+
+      - name: anemia
+        sql: anemia
+        type: string
+
+      - name: cerebrovascular_accident_infract
+        sql: cerebrovascular_accident_infract
+        type: boolean
+
+      - name: acute_kidney_injury
+        sql: acute_kidney_injury
+        type: boolean
+
+      - name: duration_of_intensive_unit_stay
+        sql: duration_of_intensive_unit_stay
+        type: number
+
+      - name: duration_of_stay
+        sql: duration_of_stay
+        type: number
+
+
+    measures:
+      - name: count
+        type: count
+
+      - name: numero_osp
+        type: count
+        sql: serial_number
+
+      - name: count_ACS
+        type: count
+        sql: acute_coronary_syndrome
+      
+      - name: duration_of_stay_AVG
+        sql: duration_of_stay
+        type: avg
+      
+      - name: duration_of_intensive_unit_stay_AVG
+        sql: duration_of_intensive_unit_stay
+        type: avg
+
+
+
+
+
+    pre_aggregations:
+      # Pre-aggregation definitions go here.
+      # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
+

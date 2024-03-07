@@ -1,0 +1,42 @@
+
+version: '3'
+
+services:
+  app:
+    image: openjdk:latest
+    container_name: app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    command: [ "java", "-jar", "/app/app.jar" ]
+    volumes:
+      - ./target/ETL-Parser-0.0.1-SNAPSHOT.jar:/app/app.jar
+    networks:
+      - retecondivisa
+  db:
+    image: 'postgres:13.1-alpine'
+    container_name: db
+    ports:
+      - "5432:5432"
+
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_DB=postgres
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    networks:
+      - retecondivisa
+
+
+
+networks:
+  retecondivisa:
+    driver: bridge
+    external: true
+
+volumes:
+  postgres:
+
+
